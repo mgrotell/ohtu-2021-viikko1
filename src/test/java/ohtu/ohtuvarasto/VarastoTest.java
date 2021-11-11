@@ -67,69 +67,60 @@ public class VarastoTest {
 
     @Test
     public void lisaaminenEiMeneYli() {
-	varasto.lisaaVarastoon(varasto.getTilavuus() + 1);
-	assertEquals(varasto.getTilavuus(), varasto.getSaldo(), vertailuTarkkuus);
+        varasto.lisaaVarastoon(varasto.getTilavuus() + 1);
+        assertEquals(varasto.getTilavuus(), varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
     public void ottaminenEiVoiLiikaa() {
- 	Double saatuMaara = varasto.otaVarastosta(1);
-	assertEquals(varasto.getSaldo(), saatuMaara, vertailuTarkkuus);
+        Double saatuMaara = varasto.otaVarastosta(1);
+        assertEquals(varasto.getSaldo(), saatuMaara, vertailuTarkkuus);
 
-   }
+    }
 
-	
-   @Test
-   public void otaNegatiivinenMaara() {
- 	Double saatuMaara = varasto.otaVarastosta(-1);
-	assertEquals(0.0, saatuMaara, vertailuTarkkuus);
-  }
+    @Test
+    public void otaNegatiivinenMaara() {
+        Double saatuMaara = varasto.otaVarastosta(-1);
+        assertEquals(0.0, saatuMaara, vertailuTarkkuus);
+    }
 
-   @Test
-   public void testaaKonstruktoriNeg() {
-	Varasto varastoUseless = new Varasto(-10);
-	assertEquals(0.0, varastoUseless.getTilavuus(), vertailuTarkkuus);
-  }
+    @Test
+    public void testaaKonstruktoriNeg() {
+        Varasto varastoUseless = new Varasto(-10);
+        assertEquals(0.0, varastoUseless.getTilavuus(), vertailuTarkkuus);
+    }
 
-  @Test
-  public void toStringTest() {
-	String palautus = varasto.toString();
-	assertEquals("saldo = " + varasto.getSaldo() + ", vielä tilaa " + varasto.paljonkoMahtuu(), palautus);
- }
+    @Test
+    public void toStringTest() {
+        String palautus = varasto.toString();
+        assertEquals("saldo = " + varasto.getSaldo() + ", vielä tilaa " + varasto.paljonkoMahtuu(), palautus);
+    }
 
+    @Test
+    public void negativinenLisays() {
+        Double saldo = varasto.getSaldo();
+        varasto.lisaaVarastoon(-1);
+        assertEquals(saldo, varasto.getSaldo(), vertailuTarkkuus);
 
+    }
 
-  @Test
-  public void negativinenLisays() {
-	Double saldo = varasto.getSaldo();
-	varasto.lisaaVarastoon(-1);
-	assertEquals(saldo, varasto.getSaldo(), vertailuTarkkuus);
+    @Test
+    public void konstruktoriKaksiArgumenttia() {
+        Varasto testVarasto = new Varasto(10, 10);
+        assertEquals(10, testVarasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(10, testVarasto.getSaldo(), vertailuTarkkuus);
 
-  }
-
-
-  @Test
-  public void konstruktoriKaksiArgumenttia() {
-	Varasto testVarasto = new Varasto(10, 10);
-	assertEquals(10, testVarasto.getTilavuus(), vertailuTarkkuus);
-	assertEquals(10, testVarasto.getSaldo(), vertailuTarkkuus);
-
-	testVarasto = new Varasto(-10, -10);
+        testVarasto = new Varasto(-10, -10);
         assertEquals(0.0, testVarasto.getTilavuus(), vertailuTarkkuus);
         assertEquals(0.0, testVarasto.getSaldo(), vertailuTarkkuus);
 
-	testVarasto = new Varasto(10, 11);
+        testVarasto = new Varasto(10, 11);
         assertEquals(10, testVarasto.getSaldo(), vertailuTarkkuus);
-  }
+    }
 
-
-
-
-
-
-
-
-
-
+    @Test
+    public void testSaldo() {
+        assertEquals(10.0, varasto.kokeileSaldo(10.0, 11.0), vertailuTarkkuus);
+    }
 
 }
