@@ -35,7 +35,8 @@ public class Varasto {
         return tilavuus;
     }
 
-    public double paljonkoMahtuu() {  // huom: ominaisuus voidaan myös laskea
+    public double paljonkoMahtuu() 
+    {  // huom: ominaisuus voidaan myös laskea
         return tilavuus - saldo;        //  ei tarvita erillistä kenttää vielaTilaa tms.
     }
 
