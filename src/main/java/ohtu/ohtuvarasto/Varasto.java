@@ -19,7 +19,7 @@ public class Varasto {
 
     public double kokeileSaldo(double tilavuus, double alkuSaldo) {
         return alkuSaldo <= tilavuus ? alkuSaldo : tilavuus;
-    }
+            }
 
     public Varasto(double tilavuus, double alkuSaldo) { // kuormitetaan
         this.tilavuus = tilavuus > 0.0 ? tilavuus : 0.0;
@@ -35,8 +35,7 @@ public class Varasto {
         return tilavuus;
     }
 
-    public double paljonkoMahtuu() 
-    {  // huom: ominaisuus voidaan myös laskea
+    public double paljonkoMahtuu() {  // huom: ominaisuus voidaan myös laskea
         return tilavuus - saldo;        //  ei tarvita erillistä kenttää vielaTilaa tms.
     }
 
